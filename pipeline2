@@ -1,8 +1,12 @@
  node {
         checkout scm
-        stage('build'){
+        stage('Build'){
                 echo 'Hola mundo'
+                withMaven (
+                  maven:'Maven text'
+               ){   
                 sh 'mvn compile'
+                }
         }
         stage('Test'){
                 echo 'Testing'
