@@ -15,7 +15,10 @@
         }
         stage('Deploy'){
                 echo 'Deploying'
-                sh 'mvn package'
+                withMaven (
+                  maven:'Maven text'
+               ){ 
+                 sh 'mvn package'
         }
 
     }
