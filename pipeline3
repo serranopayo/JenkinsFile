@@ -1,0 +1,32 @@
+ node {
+        checkout scm
+        stage('Build'){
+                echo 'Hola mundo'
+                withMaven (
+                  maven:'Maven text'
+               ){   
+                sh 'mvn compile'
+                }
+        }
+        stage('Test'){
+                echo 'Testing'
+                withMaven (
+                  maven:'Maven text'
+               ){ 
+                sh 'mvn test'}
+         //       junit '**/target/*.xml'
+        }
+        stage('Deploy'){
+                echo 'Deploying'
+                withMaven (
+                  maven:'Maven text'
+               ){ 
+                 sh 'mvn package'
+        }
+        stage('Commit'){
+                echo 'commit'
+                git add target
+                git commit -am 'OK'
+                }
+    }
+    }
